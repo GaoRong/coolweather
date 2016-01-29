@@ -30,6 +30,9 @@ public class City {
 		this.provinceId = provinceId;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return cityName+cityCode+provinceId;
+	}
 
 }

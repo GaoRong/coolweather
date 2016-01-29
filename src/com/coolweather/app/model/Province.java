@@ -27,4 +27,5 @@ public class Province {
 		this.proviceCode = proviceCode;
 	}
 
+	
 }

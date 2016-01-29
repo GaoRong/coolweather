@@ -10,7 +10,7 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 	/**
 	 * Provice表建表语句
 	 */
-	public static final String CREATE_TABLE_PROVINCE = "create table province(" +
+	public static final String CREATE_TABLE_PROVINCE = "create table Province(" +
 			"id integer primary key autoincrement," +
 			"province_name text," +
 			"province_code text)";
@@ -23,12 +23,12 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 			"city_code text," +
 			"province_id integer)";
 	/**
-	 * Country建表语句
+	 * county建表语句
 	 */
-	public static final String CERATE_TABLE_COUNTRY ="create table Country(" +
+	public static final String CERATE_TABLE_COUNTY ="create table County(" +
 			"id integer primary key autoincrement," +
-			"country_name text," +
-			"country_code text," +
+			"county_name text," +
+			"county_code text," +
 			"city_id integer)";
 	
 	
@@ -39,15 +39,17 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(CERATE_TABLE_COUNTRY);
+		db.execSQL(CERATE_TABLE_COUNTY);
 		db.execSQL(CREATE_TABLE_CITY);
 		db.execSQL(CREATE_TABLE_PROVINCE);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
-
+		db.execSQL("drop table if exists Province");
+		db.execSQL("drop table if exists County");
+		db.execSQL("drop table if exists City");
+		onCreate(db);
 	}
 
 }
